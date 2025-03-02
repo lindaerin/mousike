@@ -6,7 +6,7 @@
     "generate-manifest": "node scripts/generateManifest.js",
     "build": "npm run generate-manifest && next build && cp -r .next/static out/_next/ && touch out/.nojekyll",
     "start": "serve out",
-    "deploy": "npm run build && git add -f out/.nojekyll && git commit -m 'Add .nojekyll' && gh-pages -d out -t true",
+    "deploy": "npm run build && gh-pages -d out --dotfiles",
     "dev": "next dev",
     "lint": "next lint"
   },

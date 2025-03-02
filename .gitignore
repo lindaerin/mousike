@@ -15,7 +15,11 @@
 
 # next.js
 /.next/
-# Allow .nojekyll to be included in out/
+
+# Ignore the entire out/ directory
+/out/
+
+# But allow .nojekyll inside out/
 !out/.nojekyll
 
 # production
