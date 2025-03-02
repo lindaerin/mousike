@@ -15,7 +15,8 @@
 
 # next.js
 /.next/
-/out/
+# Allow .nojekyll to be included in out/
+!out/.nojekyll
 
 # production
 /build
