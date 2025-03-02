@@ -7,6 +7,7 @@ const basePath =
   process.env.NEXT_PUBLIC_BASE_PATH ||
   (process.env.NODE_ENV === "production" ? "/mousike" : "");
 
+const manifestPath = `${basePath}/audio/manifest.json`;
 const lofiBackgroundUrl = `${basePath}/images/lofi.jpg`;
 
 export interface AudioFile {
@@ -21,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     const fetchAudioFiles = async () => {
       try {
-        const res = await fetch(`${basePath}/audio/manifest.json`);
+        const res = await fetch(manifestPath);
 
         if (!res.ok) throw new Error("Failed to fetch audio manifest");
 
@@ -34,7 +35,7 @@ const Home = () => {
 
         setAudios(audioFiles);
       } catch (error) {
-        console.error(error);
+        console.error("Error loading audio files:", error);
       }
     };
 
@@ -59,7 +60,18 @@ const Home = () => {
           isVisible ? "" : "hidden"
         }`}
       >
-        Main Page
+        <h2 className="text-lg font-bold">Audio List</h2>
+        <ul className="mt-2">
+          {audios.length > 0 ? (
+            audios.map((audio) => (
+              <li key={audio.title} className="py-1">
+                🎵 {audio.title}
+              </li>
+            ))
+          ) : (
+            <li>Loading...</li>
+          )}
+        </ul>
       </div>
     </main>
   );
