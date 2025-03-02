@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { formatFilename } from "./formatUtils";
-import { AudioFile } from "../page";
+import { AudioFile } from "@/app/page";
 
 export const getAudioFiles = (): AudioFile[] => {
   const musicFolderPath = path.join(process.cwd(), "public", "assets", "music");
