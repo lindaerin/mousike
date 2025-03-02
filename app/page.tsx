@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import useKeyboardEvent from "@/hooks/useKeyboardEvent";
+import Audio from "@/components/Audio";
 
 const basePath =
   process.env.NEXT_PUBLIC_BASE_PATH ||
@@ -60,18 +61,7 @@ const Home = () => {
           isVisible ? "" : "hidden"
         }`}
       >
-        <h2 className="text-lg font-bold">Audio List</h2>
-        <ul className="mt-2">
-          {audios.length > 0 ? (
-            audios.map((audio) => (
-              <li key={audio.title} className="py-1">
-                🎵 {audio.title}
-              </li>
-            ))
-          ) : (
-            <li>Loading...</li>
-          )}
-        </ul>
+        <Audio audioFiles={audios} />
       </div>
     </main>
   );
