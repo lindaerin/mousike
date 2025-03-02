@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
+const isProd = process.env.NODE_ENV === "production";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  output: "export",
+  images: { unoptimized: true },
+  basePath: isProd ? "/mousike" : "",
+  assetPrefix: isProd ? "/mousike/" : "",
+  trailingSlash: true,
 };
 
-export default nextConfig;
+module.exports = nextConfig;
